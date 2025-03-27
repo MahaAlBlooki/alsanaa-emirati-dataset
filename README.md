@@ -5,24 +5,21 @@ This repository contains a curated and preprocessed dataset for traditional Emir
 
 ## 📁 Contents
 
-- `audio/` — Emirati Arabic speech recordings in `.wav` format
-- `transcripts/` — Plain text transcription files for each utterance
-- `metadata.csv` — Metadata file including file IDs, durations, and additional information
-- `preprocessing/` — (Optional) Scripts used for cleaning and preparing the dataset
-- `annotation_guidelines.pdf` — (Optional) Transcription and annotation conventions used
-
+- `audio/` — Emirati Arabic speech recordings in `.mp3` format
+- `transcriptions.txt` — Plain text transcription for each utterance
+- `metadata.csv` — Metadata file including file IDs and durations in seconds
 
 ## ✍️ Ground Truth Format
 
-Each line in the transcription files corresponds to a complete utterance. The format is:
+Each row in transcriptions.txt corresponds to a complete utterance. The format is:
 
-<utterance_id> <normalized_transcription>
+<utterance_id> <transcription>
 
 **Example:**
 1 العلم فخر والعلم شي معنوي اكثر من انه شي مادي ...
 
 - `1`: Utterance ID or audio file number
-- Text: Normalized transcription without diacritics or punctuation
+- Text: Original, preprocessed transcription
 
 
 ## 🔧 Preprocessing Pipeline
@@ -33,7 +30,7 @@ Preprocessing is a critical step in preparing speech data for ASR training and e
 Diacritics were removed to normalize Arabic script and match ASR output expectations. For example:
 - `إن` → `ان`
 - `أ`, `إ`, `آ` → `ا`
-- All tashkeel marks like were removed.
+- All tashkeel marks were removed.
   `ءَ`, `ءِ`, `ءُ`, `ءٌ`, `ءً`, `ءٍ`
 
 ### 2. Punctuation Removal
@@ -58,7 +55,7 @@ This dataset is intended for:
 
 To use this dataset:
 1. Clone the repository
-2. Load the transcripts and audio files
+2. Load transcriptions and audio files
 3. Use any ASR training toolkit (e.g., Whisper, Wav2Vec 2.0) with the preprocessed data
 
 
